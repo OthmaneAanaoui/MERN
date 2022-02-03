@@ -1,0 +1,191 @@
+<definitions name="userService" 
+    targetNamespace="http://www.examples.com/wsdl/user?wsdl" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tns="http://www.examples.com/wsdl/user?wsdl" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <types>
+        <xsd:schema version="1.0" targetNamespace="http://www.examples.com/wsdl/user?wsdl" elementFormDefault="qualified">
+            <xsd:complexType name="user">
+                <xsd:sequence>
+                    <xsd:element name="email" type="xsd:string" />
+                    <xsd:element name="name" type="xsd:string" />
+                    <xsd:element name="firstName" type="xsd:string" />
+                    <xsd:element name="password" type="xsd:string" />
+                    <xsd:element name="data" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="lobby">
+                <xsd:sequence>
+                    <xsd:element name="name" type="xsd:string" />
+                    <xsd:element name="data" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+    <message name="getUsersRequest">
+
+    </message>
+
+    <message name="getUsersResponse">
+        <part name="users" type="xsd:string" />
+    </message>
+
+
+     <message name="getLobbiesRequest">
+
+    </message>
+
+    <message name="getLobbiesResponse">
+        <part name="lobbies" type="xsd:string" />
+    </message>
+
+    <message name="getUserByEmailRequest">
+        <part name="email" type="xsd:string" />
+    </message>
+
+    <message name="getUserByEmailResponse">
+        <part name="user" type="xsd:string" />
+    </message>
+
+    <message name="addUserRequest">
+        <part name="user" type="xsd:user" />
+    </message>
+
+    <message name="addUserResponse">
+        <part name="user" type="xsd:user" />
+    </message>
+
+      <message name="addLobbyRequest">
+        <part name="lobby" type="xsd:lobby" />
+    </message>
+
+    <message name="addLobbyResponse">
+        <part name="lobby" type="xsd:lobby" />
+    </message>
+
+    <message name="updateUserRequest">
+        <part name="user" type="xsd:user" />
+    </message>
+
+    <message name="updateUserResponse">
+        <part name="user" type="xsd:user" />
+    </message>
+
+    <message name="deleteUserRequest">
+        <part name="email" type="xsd:string" />
+    </message>
+
+    <message name="deleteUserResponse">
+        <part name="message" type="xsd:string" />
+    </message>
+
+    <portType name="user_PortType">
+        <operation name="getUsers">
+            <input message="tns:getUsersRequest" />
+            <output message="tns:getUsersResponse" />
+        </operation>
+
+        <operation name="getLobbies">
+            <input message="tns:getLobbiesRequest" />
+            <output message="tns:getLobbiesResponse" />
+        </operation>
+        <operation name="getUserByEmail">
+            <input message="tns:getUserByEmailRequest" />
+            <output message="tns:getUserByEmailResponse" />
+        </operation>
+        <operation name="addUser">
+            <input message="tns:addUserRequest" />
+            <output message="tns:addUserResponse" />
+        </operation>
+        <operation name="addLobby">
+            <input message="tns:addLobbyRequest" />
+            <output message="tns:addLobbyResponse" />
+        </operation>
+        <operation name="updateUser">
+            <input message="tns:updateUserRequest" />
+            <output message="tns:updateUserResponse" />
+        </operation>
+        <operation name="deleteUser">
+            <input message="tns:deleteUserRequest" />
+            <output message="tns:deleteUserResponse" />
+        </operation>
+    </portType>
+
+    <binding name="user_Binding" type="tns:user_PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="getUsers">
+            <soap:operation soapAction="getUsers"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+        <operation name="getLobbies">
+            <soap:operation soapAction="getLobbies" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+        <operation name="getUserByEmail">
+            <soap:operation soapAction="getUserByEmail" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+        <operation name="addUser">
+            <soap:operation soapAction="addUser" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+
+        <operation name="addLobby">
+            <soap:operation soapAction="addLobby" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+
+        <operation name="updateUser">
+            <soap:operation soapAction="updateUser" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+        <operation name="deleteUser">
+            <soap:operation soapAction="deleteUser" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+    </binding>
+
+    <service name="user_service">
+        <documentation>WSDL File for mapService</documentation>
+        <port binding="tns:user_Binding" name="user_port">
+            <soap:address location="http://localhost:8000/user/" />
+        </port>
+    </service>
+</definitions>

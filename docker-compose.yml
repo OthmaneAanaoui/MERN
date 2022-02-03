@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./
+      target: dev
+    volumes:
+      - .:/src/user/app
+    command: npm run start:dev
+    ports:
+      - "8000:3000"
+    environment:
+      NODE_ENV: development
+      URL_MONGO: mongodb://api:docker1234@mongo
+      DEBUG: user_api:*
+
+  mongo:
+    image: mongo:4.0
+    volumes:
+      - "./mongo/data:/db"
+    ports: 
+      - "27017:27017"
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=api
+      - MONGO_INITDB_ROOT_PASSWORD=docker1234
+#db.createUser({user: "api",pwd: "docker1234",roles: [ { role: "readWrite", db: "reporting" } ],mechanisms: [ "SCRAM-SHA-256" ]   }
+# services:
+#   node:
+#    image: node:10.16.3
+#     volumes:
+#       - "./api:/var/www"  
+#     ports:
+#       - "8081:3000"
+#     links:
+#       - mongo
+#     command: bash -c "cd /var/www start ./api/api.js --name API --no-daemon"
+#     environment: 
+#       - URL_MONGO=mongodb://api:docker1234@mongo
+
+#   mongo:
+#     image: mongo:4.0
+#     volumes:
+#       - "./mongo/data:/data/db"
+#     ports: 
+#       - "27017:27017"
+#     environment: 
+#       - MONGO_INITDB_ROOT_USERNAME=api
+#       - MONGO_INITDB_ROOT_PASSWORD=docker1234

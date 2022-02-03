@@ -1,0 +1,37 @@
+{
+  "name": "user_service",
+  "version": "1.0.0",
+  "description": "user web service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start:dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/M2_LIOT_Web_service/user_service.git"
+  },
+  "keywords": [
+    "user",
+    "web",
+    "service",
+    "manager"
+  ],
+  "author": "Ambassadeur M2 LIOT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/M2_LIOT_Web_service/user_service/issues"
+  },
+  "homepage": "https://gitlab.com/M2_LIOT_Web_service/user_service#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.14",
+    "soap": "^0.43.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}

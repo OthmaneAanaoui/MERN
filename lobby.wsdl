@@ -1,0 +1,63 @@
+<definitions name="userService" 
+    targetNamespace="http://www.examples.com/wsdl/user?wsdl" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tns="http://www.examples.com/wsdl/user?wsdl" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <types>
+        <xsd:schema version="1.0" targetNamespace="http://www.examples.com/wsdl/user?wsdl" elementFormDefault="qualified">
+            <xsd:complexType name="lobby">
+                <xsd:sequence>
+                    <xsd:element name="name" type="xsd:string" />
+                    
+                    <xsd:element name="data" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+   
+
+
+     <message name="getLobbiesRequest">
+
+    </message>
+
+    <message name="getLobbiesResponse">
+        <part name="lobbies" type="xsd:string" />
+    </message>
+
+    
+
+    <portType name="user_PortType">
+        
+
+        <operation name="getLobbies">
+            <input message="tns:getLobbiesRequest" />
+            <output message="tns:getLobbiesResponse" />
+        </operation>
+       
+    </portType>
+
+    <binding name="user_Binding" type="tns:user_PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        
+        <operation name="getLobbies">
+            <soap:operation soapAction="getLobbies" />
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:userservice" use="encoded" />
+            </output>
+        </operation>
+        
+    </binding>
+
+    <service name="user_service">
+        <documentation>WSDL File for mapService</documentation>
+        <port binding="tns:user_Binding" name="user_port">
+            <soap:address location="http://localhost:8000/user/" />
+        </port>
+    </service>
+</definitions>
